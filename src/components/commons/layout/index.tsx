@@ -18,8 +18,10 @@ interface ILayoutProps {
 
 export default function Layout(props: ILayoutProps) {
   const router = useRouter();
+  /*
   console.log(router); // 모든 주소
   console.log(router.asPath); // 현재의 실제 주소를 그대로 가져옴 pathname은 폴더형태로 주소를 가져오는것
+  */
 
   // 모달창 만들때 처럼 조건부 렌더링 걸기
   const isHiddenHeader = HIDDEN_HEADERS.includes(router.asPath);

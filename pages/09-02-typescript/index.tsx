@@ -1,5 +1,6 @@
 export default function Ex() {
   // 타입추론 : 바로 타입을 적지않아도 알아서 추론을 함
+
   let aaa = "안녕하세요";
   aaa = 3;
 
