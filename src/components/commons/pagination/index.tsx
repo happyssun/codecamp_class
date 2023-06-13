@@ -9,7 +9,7 @@ const Page = styled.span`
   margin: 10px;
 `;
 
-export default function PageNatation() {
+export default function PageNation() {
   const FETCH_BOARDS_COUNT = gql`
     query fetchBoardsCount {
       fetchBoardsCount

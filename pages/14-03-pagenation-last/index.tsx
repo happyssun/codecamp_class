@@ -31,6 +31,7 @@ const FETCH_BOARDS = gql`
   }
 `;
 
+// 전체 게시글이 몇개인지 확인
 const FETCH_BOARDS_COUNT = gql`
   query fetchBoardsCount {
     fetchBoardsCount
@@ -48,13 +49,14 @@ export default function StaticRoutedPage() {
   // 전체 게시글 수 가져오기
   // 1.전체 페이지수를 확인 할수 있는 데이터를 백엔드에서 가져오기
   // 요기서의 data: dataBoardCount 한 이유는 위에 data라는 변수를 사용했기에 여기에서 data를 다른이름으로 지정한 것임
-  const { data: dataBoardCount } =
+  const { data: dataBoardsCount } =
     useQuery<Pick<Query, "fetchBoardsCount">>(FETCH_BOARDS_COUNT);
 
   // 페이지를 10으로 나눠서 올림한 수  마지막페이지 = 올림(전체게시글 /10)
-  const lastPage = dataBoardCount
-    ? Math.ceil(dataBoardCount.fetchBoardsCount / 10)
-    : 0;
+  const lastPage =
+    dataBoardsCount != null
+      ? Math.ceil(dataBoardsCount.fetchBoardsCount / 10) // 플레이그라운드에서 fetchBoardCount 불러오기. 전체 페이지수 확인이 가능
+      : 0;
 
   const onClickPage = (e: MouseEvent<HTMLSpanElement>) => {
     refetch({ page: Number(e.currentTarget.id) });
