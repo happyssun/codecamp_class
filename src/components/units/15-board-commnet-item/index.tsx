@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { useState } from "react";
-import { BoardReturn } from "../../../commons/types/generated/types";
+import { Board } from "../../../commons/types/generated/types";
 
 const Row = styled.div`
   display: flex;
@@ -11,7 +11,7 @@ const Column = styled.div`
 `;
 
 interface IProps {
-  el: BoardReturn;
+  el: Board;
 }
 
 export default function BoardCommentItem(props: IProps) {

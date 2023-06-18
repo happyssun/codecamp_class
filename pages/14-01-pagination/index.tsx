@@ -1,3 +1,6 @@
+// 여기서부터 플레이그라운드 서버 주소를 변경헸다. 코드젠도 변경
+// 따라서 이전의 타입스크립트에 문제가 생긴것들은 무시
+
 import { useQuery, gql } from "@apollo/client";
 import styled from "@emotion/styled";
 import {
@@ -9,7 +12,7 @@ import { MouseEvent } from "react";
 const FETCH_BOARDS = gql`
   query fetchBoards($page: Int) {
     fetchBoards(page: $page) {
-      number
+      _id
       writer
       title
       contents
@@ -43,8 +46,8 @@ export default function PagiNationPage() {
   return (
     <>
       {data?.fetchBoards.map((el) => (
-        <Row key={el.number}>
-          <Column>{el.number}</Column>
+        <Row key={el._id}>
+          <Column>{el._id}</Column>
           <Column>{el.writer}</Column>
           <Column>{el.contents}</Column>
         </Row>

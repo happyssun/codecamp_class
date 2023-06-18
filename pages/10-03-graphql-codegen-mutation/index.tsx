@@ -20,10 +20,11 @@ const CREATE_BOARD = gql`
 `;
 
 export default function GraphqlMutation() {
+  // useMutation<result타입, variables타입> : result타입 자리에 Pick ~~~ ,콤마뒤에는 variable타입
   const [createBoard] = useMutation<
     Pick<Mutation, "createBoard">,
     MutationCreateBoardArgs
-  >(CREATE_BOARD); // useMutation<result타입, variables타입>
+  >(CREATE_BOARD);
 
   // input 값을 받을 저장소 생성
   const [writer, setWriter] = useState("");
@@ -42,7 +43,7 @@ export default function GraphqlMutation() {
     });
 
     console.log(result);
-    alert(result.data?.createBoard?.message);
+    alert(result.data?.createBoard?.messge);
   };
 
   // input창에서 이름을 입력하면 e.target.value에 저장이 되고 그 값을 변경값인 setWriter에 저장
