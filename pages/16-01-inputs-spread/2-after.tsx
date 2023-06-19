@@ -59,7 +59,7 @@ export default function SpreadOperatorPage() {
   */
 
   // 변경이 될 writer부분만 들어온 값으로 변경하고 나머지는 값을 변경없이 그대로 유지하기 위해 inputs.title
-  const onChangeInputs = (e) => {
+  const onChangeInputs = (e: any) => {
     setInputs({
       // writer: inputs.writer,     -
       // title: inputs.title,

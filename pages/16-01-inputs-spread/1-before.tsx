@@ -39,15 +39,15 @@ export default function GraphqlMutation() {
   };
 
   // input창에서 이름을 입력하면 e.target.value에 저장이 되고 그 값을 변경값인 setWriter에 저장
-  const onChangeWriter = (e) => {
+  const onChangeWriter = (e: any) => {
     setWriter(e.target.value);
   };
 
-  const onChangeTitle = (e) => {
+  const onChangeTitle = (e: any) => {
     setTitle(e.target.value);
   };
 
-  const onChangeContents = (e) => {
+  const onChangeContents = (e: any) => {
     setContents(e.target.value);
   };
 
