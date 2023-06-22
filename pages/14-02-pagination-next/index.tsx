@@ -55,8 +55,7 @@ export default function StaticRoutedPage() {
   return (
     <>
       {data?.fetchBoards.map((el) => (
-        <Row key={el.number}>
-          <Column>{el.number}</Column>
+        <Row key={el._id}>
           <Column>{el.writer}</Column>
           <Column>{el.contents}</Column>
         </Row>

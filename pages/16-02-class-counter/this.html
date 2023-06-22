@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <title>This의 이해</title>
+    <script>
+      class Counter {
+        count = 10;
+
+        // 방법1) 화살표 함수로 변경하여 연결하는 방법
+        onClickButton = () => {
+          console.log("현재 카운트: ", this.count); // 만약에 여기에서 연결시키지 않고 그냥 this.innerText하면 "클릭하세요"가 나온다. this는 동적이기 때문에 주체에 따라 매번 변경됨
+        };
+
+        render() {
+          const button = document.createElement("button");
+          button.count = 100;
+          button.innerText = "클릭하세요!";
+          button.addEventListener("click", this.onClickButton); // 방법2) .bind(this)를 통해 연결하는 방법
+          document.body.appendChild(button);
+        }
+      }
+      window.onload = function () {
+        const counter = new Counter();
+        counter.render();
+      };
+    </script>
+    <style>
+      li {
+        margin: 10px;
+      }
+      p {
+        margin-top: 20px;
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <h1>this의 이해</h1>
+
+      <ol>
+        <li>this는 주체가 누구냐에 따라 달라진다</li>
+        <li>
+          카운트버튼에 this.count를 넣게 되면 class Counter안의 count가 this인듯
+          소스상으로는 보이겠지만 여기서의 this는 button.count가 된다.
+          <br />왜냐면 지금 ("click", this.onClickButton); 이렇게 버튼이
+          주체이기 때문(동적 변환)
+          <ul>
+            <p>동적으로 변하지 않게 하기위해서는</p>
+            <li>
+              방법1) this.onClickButton 뒤에 bind를 해줘야함=====>
+              this.onClickButton.bind(this)
+            </li>
+            <li>
+              방법2) onClickButton() 함수를 화살표 함수로 바꿔줌 onClickButton()
+              => {} 이렇게
+            </li>
+          </ul>
+        </li>
+      </ol>
+    </div>
+  </body>
+</html>

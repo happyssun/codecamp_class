@@ -34,12 +34,14 @@ export default function infiniteScrollerPage() {
     QueryFetchBoardsArgs
   >(FETCH_BOARDS);
 
+  // 스크롤이 해당 영역의 하단 끝에 닿았을때 실행되어야할 것을 함수로
   const onLoadMore = () => {
     if (data === undefined) return; // 데이타가 없다면 실행하지 않는다
 
     void fetchMore({
       // await는 이거 끝날때까지 다른거 진행 안되게.. 여선 그냥 진행해도 됨
       variables: { page: Math.ceil(data?.fetchBoards.length / 10) + 1 }, // 이걸 통해서 추가적인 10개를
+
       // 10개를 가지고 오면 기존에 있던거에 추가적으로 이번에 받아온애들을 fetchMoreResult란 이름으로 가져옴
       updateQuery: (prev, { fetchMoreResult }) => {
         if (!fetchMoreResult.fetchBoards === undefined) {
