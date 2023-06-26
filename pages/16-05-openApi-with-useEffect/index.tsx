@@ -7,7 +7,7 @@ export default function OpenapiWithUseEffectPage() {
   useEffect(() => {
     const fetchDog = async () => {
       const result = await axios.get("https://dog.ceo/api/breeds/image/random");
-      setDogUrl(result.data.massage);
+      setDogUrl(result.data.message);
     };
     void fetchDog();
   }, []);
