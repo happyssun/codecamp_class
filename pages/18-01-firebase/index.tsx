@@ -4,7 +4,7 @@ import {
   getDocs,
   getFirestore,
 } from "firebase/firestore/lite";
-import { firebaseApp } from "../_app";
+import { firebaseApp } from "../../src/commons/libraries/firebase";
 
 export default function FireBasePage() {
   const onClickSubmit = () => {
@@ -14,6 +14,7 @@ export default function FireBasePage() {
       title: "This is a title",
       contents: "This is a contents",
     });
+    console.log(board);
   };
 
   const onClickFetch = async () => {
