@@ -1,6 +1,6 @@
 import { gql, useMutation } from "@apollo/client";
 import { Modal } from "antd";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useState, useRef } from "react";
 import {
   Mutation,
   MutationUploadFileArgs,
@@ -14,6 +14,8 @@ const UPLOAD_FILE = gql`
   }
 `;
 
+// 파일 선택하는 버튼은 없앨수가 없다
+// 그래서 이 버튼을 안보이게 하고 다른 가짜버튼을 만들어서 가짜버튼을 클릭하면 안보이게 만든 그 버튼이 클릭되게 연결
 export default function ImageUploadPage() {
   const [uploadFile] = useMutation<
     Pick<Mutation, "uploadFile">,
@@ -21,6 +23,7 @@ export default function ImageUploadPage() {
   >(UPLOAD_FILE);
 
   const [imageUrl, setImageUrl] = useState("");
+  const fileRef = useRef<HTMLInputElement>(null); // 처음엔 연결된것이 없으니 초기값을 null로
 
   const onChangeFile = async (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]; // <input type="file" multiple/>  multiple속성으로 여러개 드래그 가능
@@ -42,12 +45,36 @@ export default function ImageUploadPage() {
     }
   };
 
+  const onClickImage = () => {
+    fileRef.current?.click();
+  };
+
   return (
     <>
-      <input type="file" onChange={onChangeFile} />
+      <div
+        style={{ width: "80px", height: "30px", backgroundColor: "skyblue" }}
+        onClick={onClickImage}
+      >
+        이미지 선택
+      </div>
+      <input
+        type="file"
+        style={{ display: "none" }}
+        onChange={onChangeFile}
+        ref={fileRef}
+      />
       <img src={`https://storage.googleapis.com/${imageUrl}`} />
     </>
   );
 }
 
 // 이미지 주소 앞에는 구글 컴퓨터 주소가 들어가야 한다.
+
+/* useRef() 참조해라
+  const qqq = useRef() 
+  그리고 참조할 내용은 input tag에서 ref={qqq} 이렇게 넣으면 두개가 연결됨
+  가짜로 만든 버튼을 클릭하면 연결해놓은 input tag가 실행되게 하기위해
+    qqq.current?.click() 
+  그러면 가짜버튼을 클릭하면 실제 type="file"인 이 것이 클릭되는 것
+
+*/
