@@ -34,7 +34,7 @@ export default function ImageUploadPage() {
     // early exit로 만든 if문(이렇게 불러오기 전 기존에 만들어놓은)이 조건에 따라 return되면서 밑의 모든 내용들이 중단
     // 그런데 이경우에는 checkValidation(file)함수만 중단이 됨으로 밑의 내용들이 실행된다
     // 그래서 libraries에 있는 파일의 retrun을 그냥 리턴이 아니고 return false로 변경 - false를 반환하게 만들고
-    // isValid가 false라면(!isValid) 리턴해줘  --  밑에것을 실행 못하게
+    // isValid가 false라면(!isValid) 리턴해줘  --  밑에것을 실행 못하
     // 19-03번 파일과 libraries에 있는 validation.ts 비교
     const isValid = checkValidationFile(file);
     if (!isValid) return;

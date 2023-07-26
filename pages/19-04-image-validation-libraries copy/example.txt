@@ -1,0 +1,35 @@
+
+/// 이 파일을 게시판에 넣을것
+/// 등록하기 할때 이미지도 함께 등록하려고 
+
+
+
+
+
+// 검증하기 - 공통사용(commons/libraries)에 분리해놓고 재사용
+export default function ImageUploadPage() {
+  
+ 
+
+
+
+
+  return (
+    <>
+     
+    </>
+  );
+}
+
+// 이미지 주소 앞에는 구글 컴퓨터 주소가 들어가야 한다.
+
+/* useRef() 참조해라
+  const qqq = useRef() 
+  그리고 참조할 내용은 input tag에서 ref={qqq} 이렇게 넣으면 두개가 연결됨
+  가짜로 만든 버튼을 클릭하면 연결해놓은 input tag가 실행되게 하기위해
+    qqq.current?.click() 
+  그러면 가짜버튼을 클릭하면 실제 type="file"인 이 것이 클릭되는 것
+
+*/
+
+// 태그 안에 바로 accept="image/jpeg" 를 넣으면 image.jpeg파일 빼고는 아예 선택이 안됨 - 초기에 아예 막아버림 : 상황에 따라 사용
