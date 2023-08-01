@@ -26,7 +26,10 @@ export default function ImageUploadPage() {
   const fileRef = useRef<HTMLInputElement>(null); // 처음엔 연결된것이 없으니 초기값을 null로
 
   const onChangeFile = async (e: ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0]; // <input type="file" multiple/>  multiple속성으로 여러개 드래그 가능
+    // <input type="file" multiple/>  multiple속성이 기본 : 한번에 여러개 등록가능
+    // multiple이 기본적용이라 file?이 아니고 files? 가 되는것이고
+    // .[0]은 파일을 하나만 등록할것이라 [0]배열에 하나만 들어가게 지정 한것
+    const file = e.target.files?.[0];
     console.log(file);
 
     // 벡엔드에서 데이터를 가져올건데 이게 백엔드에서 잘못될수도 있기 때문에 이런부분에는 try{}catch{}로 한번 감싸준다
