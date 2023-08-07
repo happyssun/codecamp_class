@@ -22,8 +22,8 @@ export default function ImageUploadPage() {
 
   const [imageUrl, setImageUrl] = useState("");
 
-  const onChangeFile = async (e: ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0]; // <input type="file" multiple/>  multiple속성으로 여러개 드래그 가능
+  const onChangeFile = async (e: ChangeEvent<HTMLInputElement>) : Promise<void> => {
+    const file = e.target.files?.[0]; // 배열로 들어오는 이유 :<input type="file" multiple/>  multiple속성으로 여러개 드래그 가능
     console.log(file);
 
     // 벡엔드에서 데이터를 가져올건데 이게 백엔드에서 잘못될수도 있기 때문에 이런부분에는 try{}catch{}로 한번 감싸준다

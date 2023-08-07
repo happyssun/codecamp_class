@@ -1,6 +1,7 @@
 import { gql, useMutation } from "@apollo/client";
 import { Modal } from "antd";
-import { ChangeEvent, useState, useRef } from "react";
+import type { ChangeEvent } from "react";
+import { useState, useRef } from "react";
 import {
   Mutation,
   MutationUploadFileArgs,
@@ -48,7 +49,7 @@ export default function ImageUploadPage() {
     }
   };
 
-  const onClickImage = () => {
+  const onClickImage = (): void => {
     fileRef.current?.click();
   };
 
