@@ -40,7 +40,8 @@ export default function SearchWithBtn() {
 
   const onClickPage = (e: MouseEvent<HTMLSpanElement>): void => {
     void refetch({ page: Number(e.currentTarget.id) }); // page는 variables 그래서 {}안에 넣음
-    // 검색을 하고 싶어 refetch할 때, search 검색어가 onClickSearch()에 의해 refetch에 이미 저장되어 있는 상태이므로 추가로 search를 포함하지 않아도 됨
+    // 검색을 하고 싶어 refetch할 때, search 검색어가 onClickSearch()에 의해 refetch에 이미 저장되어 있는 상태이므로
+    // 추가로 search를 포함하지 않아도 됨
   };
 
   const onChangeSearch = (e: ChangeEvent<HTMLInputElement>): void => {

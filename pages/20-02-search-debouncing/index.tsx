@@ -37,6 +37,8 @@ const Page = styled.span`
 // 디바운싱 : 특정시간 이내, 추가 입력이 없을시, 마지막 1회만 실행
 // 쓰로틀링 : 특정시간 이내, 추가 입력이 있어도, 처음 1회만 실행 - 스크롤 내릴때
 // 라이브러리 다운받아 사용 : lodash
+// yarn add lodash
+// yarn add - D @types/lodash
 
 export default function SearchWithoutBtn() {
   const { data, refetch } = useQuery<
