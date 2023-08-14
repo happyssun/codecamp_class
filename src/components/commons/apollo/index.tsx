@@ -10,6 +10,10 @@ interface IApolloSettingProps {
   children: JSX.Element;
 }
 
+// 이렇게 빼놓은 이유
+// 아폴로세팅함수가 리렌더 되더라도 cache가 리렌더링 되지 않게 하기 위해 - section22 부분 확인
+const GLOBAL_STATE = new InMemoryCache();
+
 export default function ApolloSetting(props: IApolloSettingProps) {
   const uploadLink = createUploadLink({
     uri: "http://backend-practice.codebootcamp.co.kr/graphql",
@@ -20,7 +24,9 @@ export default function ApolloSetting(props: IApolloSettingProps) {
   // 그것들을 client 안에는 link: 를 통해 연결해 준다
   const client = new ApolloClient({
     link: ApolloLink.from([uploadLink as unknown as ApolloLink]),
-    cache: new InMemoryCache(),
+    // cache: new InMemoryCache(), - 이부분을 따로 빼서 저장
+    // 컴퓨터의 메모리에다가 백엔드에서 받아온 데이터 임시저장 - 이부분이 글로벌스테이트
+    cache: GLOBAL_STATE,
   });
 
   // prettier-ignore

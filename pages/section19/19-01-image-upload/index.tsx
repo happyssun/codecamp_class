@@ -4,7 +4,7 @@ import { ChangeEvent, useState } from "react";
 import {
   Mutation,
   MutationUploadFileArgs,
-} from "../../src/commons/types/generated/types";
+} from "../../../src/commons/types/generated/types";
 
 const UPLOAD_FILE = gql`
   mutation uploadFile($file: Upload!) {
