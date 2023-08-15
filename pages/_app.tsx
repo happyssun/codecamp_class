@@ -3,6 +3,7 @@ import { AppProps } from "next/app";
 import ApolloSetting from "../src/components/commons/apollo";
 import Layout from "../src/components/commons/layout";
 import { globalStyles } from "../src/components/commons/styles/globalStyles";
+import { RecoilRoot } from "recoil";
 
 function App({ Component }: AppProps) {
   // const client = new ApolloClient({
@@ -11,14 +12,16 @@ function App({ Component }: AppProps) {
   // });
 
   return (
-    <ApolloSetting>
-      <>
-        <Global styles={globalStyles} />
-        <Layout>
-          <Component />
-        </Layout>
-      </>
-    </ApolloSetting>
+    <RecoilRoot>
+      <ApolloSetting>
+        <>
+          <Global styles={globalStyles} />
+          <Layout>
+            <Component />
+          </Layout>
+        </>
+      </ApolloSetting>
+    </RecoilRoot>
 
     // <ApolloProvider client={client}>
     //   <Layout>

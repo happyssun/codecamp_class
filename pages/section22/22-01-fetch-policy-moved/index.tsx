@@ -1,4 +1,3 @@
-import styled from "@emotion/styled";
 import { gql, useQuery } from "@apollo/client";
 import {
   Query,
