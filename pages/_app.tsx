@@ -5,6 +5,7 @@ import Layout from "../src/components/commons/layout";
 import { globalStyles } from "../src/components/commons/styles/globalStyles";
 import { RecoilRoot } from "recoil";
 
+
 function App({ Component }: AppProps) {
   // const client = new ApolloClient({
   //   uri: "http://practice.codebootcamp.co.kr/graphql",

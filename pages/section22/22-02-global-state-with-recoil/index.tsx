@@ -6,7 +6,7 @@ import { useEffect } from "react";
 export default function GlobalStateWithRecoilPage() {
   // const [isEdit, setIsEdit] = useState(true);
 
-  const [isEdit, setIsEdit] = useRecoilState(isEditState);
+  const [, setIsEdit] = useRecoilState(isEditState);
 
   useEffect(() => {
     setIsEdit(false);

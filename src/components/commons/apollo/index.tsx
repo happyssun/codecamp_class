@@ -7,6 +7,7 @@ import {
 import { createUploadLink } from "apollo-upload-client";
 import { useRecoilState } from "recoil";
 import { accessTokenState } from "../../../commons/stores";
+import { useEffect } from "react";
 
 interface IApolloSettingProps {
   children: JSX.Element;
@@ -17,7 +18,36 @@ interface IApolloSettingProps {
 const GLOBAL_STATE = new InMemoryCache();
 
 export default function ApolloSetting(props: IApolloSettingProps) {
-  const [accessToken] = useRecoilState(accessTokenState);
+  const [accessToken, setAccessToken] = useRecoilState(accessTokenState);
+
+/* pre-redering 예제
+
+1. process.browser 방법
+  if (process.browser) {
+    console.log("지금은 브라우저!");
+    alert("브라우저에서 실행")
+   
+  } else {
+    console.log("지금은 프론트엔드 서버 즉 yarn dev로 실행시킨 프로그램 내부 ");
+  }
+
+2. typeof window 방법
+  if (typeof window !== "undefined") {
+    console.log("지금은 브라우저!");
+    alert("브라우저에서 실행")
+  } else {
+    console.log("지금은 프론트엔드 서버 즉 yarn dev로 실행시킨 프로그램 내부 ");
+  }
+
+3. 프리렌더링을 무시 - useEffect 방법 : 가장 많이 사용 */
+  useEffect(() => {
+    const result = localStorage.getItem("accessToken");
+    console.log(result);
+
+    // 로컬스토리지에 저장한 accessToken을 가져오는데 값이 만약에 없다면 ""(빈문자열)
+    // setState에 저장되는것은 다 문자열로 바뀌어 저장됨
+    setAccessToken(result ?? "");
+  }, []);
 
   const uploadLink = createUploadLink({
     uri: "http://backend-practice.codebootcamp.co.kr/graphql",
@@ -49,3 +79,10 @@ export default function ApolloSetting(props: IApolloSettingProps) {
 // yarn add apollo-upload-client 파일을 업로드 하기 위해 필요한 설치
 // yarn add @types/apollo-upload-client --dev 타입스크립트도 설치
 // 그런 다음 createUploadLink 연결
+
+/* next.js의 hydration 이해
+
+
+
+
+*/
