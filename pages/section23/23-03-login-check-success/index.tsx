@@ -20,7 +20,7 @@ export default function LocalStorageSuccessPage(): JSX.Element {
   // 로컬스토리지에 accessToken이 없으면 로그인은 해달라고 하고 로그인페이지로 다시 이동
   useEffect(() => {
     if (localStorage.getItem("accessToken") === null) {
-      alert("로그인을 먼저 하세요!");
+      alert("로그인을 먼저 하세요!"); 
       void router.push("/section23/23-03-login-check");
     }
   }, []);

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Closure 실습</title>
+    <script>
+      function aaa() {
+        const apple = 10;
+        function bbb() {
+          const banana = 20;
+          console.log(banana);
+          console.log(apple);
+        }
+        const qqq = 3;
+
+        bbb();
+      }
+
+      aaa();
+    </script>
+  </head>
+  <body></body>
+</html>
