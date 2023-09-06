@@ -25,6 +25,7 @@ module.exports = {
     "@typescript-eslint/no-floating-promises": "off",
     "@typescript-eslint/strict-boolean-expressions": "off",
     "@typescript-eslint/triple-slash-reference": "off",
+    "react/display-name": "off",
   },
   ignorePatterns: ["*.js"],
 };
