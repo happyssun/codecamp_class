@@ -29,7 +29,7 @@ const Page = styled.span`
   font-size: 18px;
 `;
 
-export default function PagiNationPage() {
+export default function PagiNationPage(): JSX.Element {
   const { data, refetch } = useQuery<
     Pick<Query, "fetchBoards">,
     QueryFetchBoardsArgs

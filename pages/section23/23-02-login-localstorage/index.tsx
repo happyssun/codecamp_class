@@ -8,6 +8,7 @@ import type {
 import { useRecoilState } from "recoil";
 import { accessTokenState } from "../../../src/commons/stores";
 import { useRouter } from "next/router";
+import { wrapAsync } from "../../../src/commons/libraries/asyncFunc";
 
 const LOGIN_USER = gql`
   mutation loginUser($password: String!, $email: String!) {
@@ -71,7 +72,7 @@ export default function LocalStoragePage(): JSX.Element {
       <input type="text" onChange={onChangeEmail} />
       비밀번호:
       <input type="password" onChange={onChangePw} />
-      <button onClick={onClickLogin}>로그인</button>
+      <button onClick={wrapAsync(onClickLogin)}>로그인</button>
     </>
   );
 }

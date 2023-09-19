@@ -25,7 +25,7 @@ const Column = styled.div`
   width: 25%;
 `;
 
-export default function BasketLocalStoragePage() {
+export default function BasketLocalStoragePage(): JSX.Element {
   const { data } = useQuery<Pick<Query, "fetchBoards">, QueryFetchBoardsArgs>(
     FETCH_BOARDS
   );

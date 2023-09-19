@@ -1,12 +1,13 @@
 import { useQuery, gql } from "@apollo/client";
 import styled from "@emotion/styled";
-import {
-  Query,
-  QueryFetchBoardsArgs,
-} from "../../src/commons/types/generated/types";
+
 import { useState, type ChangeEvent, type MouseEvent } from "react";
 import _ from "lodash";
 import { v4 as uuidv4 } from "uuid";
+import {
+  Query,
+  QueryFetchBoardsArgs,
+} from "../../../src/commons/types/generated/types";
 
 const FETCH_BOARDS = gql`
   query fetchBoards($page: Int, $search: String) {
@@ -38,7 +39,7 @@ const Page = styled.span`
 // 2. 키워드 저장할 state 만들기
 // 3. 분리된 문장 map으로 그리고 el이 키워드랑 같으면 색 변경되게
 
-export default function SearchKeyword() {
+export default function SearchKeyword(): JSX.Element {
   const [keyword, setKeyword] = useState("");
 
   const { data, refetch } = useQuery<

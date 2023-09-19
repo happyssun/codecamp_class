@@ -14,7 +14,7 @@ const UPLOAD_FILE = gql`
   }
 `;
 
-export default function ImageUploadPage() {
+export default function ImageUploadPage(): JSX.Element {
   const [uploadFile] = useMutation<
     Pick<Mutation, "uploadFile">,
     MutationUploadFileArgs
@@ -22,7 +22,9 @@ export default function ImageUploadPage() {
 
   const [imageUrl, setImageUrl] = useState("");
 
-  const onChangeFile = async (e: ChangeEvent<HTMLInputElement>) : Promise<void> => {
+  const onChangeFile = async (
+    e: ChangeEvent<HTMLInputElement>
+  ): Promise<void> => {
     const file = e.target.files?.[0]; // 배열로 들어오는 이유 :<input type="file" multiple/>  multiple속성으로 여러개 드래그 가능
     console.log(file);
 
