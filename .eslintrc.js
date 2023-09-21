@@ -22,8 +22,9 @@ module.exports = {
     "@typescript-eslint/consistent-type-imports": "off",
     "@typescript-eslint/no-misused-promises": "off", // 비동기 방식을 사용할때 리턴에 함수연결시 에러 - section23확인
     "@typescript-eslint/no-floating-promises": "off",
-    "@typescript-eslint/strict-boolean-expressions": "off",
+    "@typescript-eslint/naming-convention": "off",
     "@typescript-eslint/triple-slash-reference": "off",
+
     "react/display-name": "off",
   },
   ignorePatterns: ["*.js"],
