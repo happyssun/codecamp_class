@@ -6,7 +6,7 @@ import styled from "@emotion/styled";
 import {
   Query,
   QueryFetchBoardsArgs,
-} from "../../src/commons/types/generated/types";
+} from "../../../src/commons/types/generated/types";
 import { MouseEvent } from "react";
 
 const FETCH_BOARDS = gql`
