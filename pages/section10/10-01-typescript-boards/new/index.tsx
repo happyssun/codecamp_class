@@ -1,4 +1,4 @@
-import BoardWrite from "../../../src/components/units/board/10-write/BoardWrite.container";
+import BoardWrite from "../../../../src/components/units/board/10-write/BoardWrite.container";
 
 export default function BoardWritePage() {
   //리턴안의 내용은 이것과 같다 {BoardWrite({isEdit:false})}
