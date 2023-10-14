@@ -1,0 +1,26 @@
+function useQuery(qqq) {
+
+  // qqq API 요청하기
+return {
+  data: {fetchBoard: { writer:"철수"}},
+    refetch: () => {
+    console.log("리페치가 실행됩니다")
+    }
+  }
+}
+undefined
+const {data, refetch} = useQuery("FETCH_BOARD")
+undefined
+data.fetchBoard.writer
+'철수'
+refetch()
+VM5942:5 리페치가 실행됩니다
+
+
+// 꼭 구조분해할당을 안하고 result에 넣어서 사용가능
+const result = useQuery("FETCH_BOARD")
+undefined
+result.data.fetchBoard.writer
+'철수'
+result.refetch()
+VM5942:5 리페치가 실행됩니다
