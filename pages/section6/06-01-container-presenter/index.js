@@ -1,4 +1,4 @@
-import BoardWrite from "../../src/components/units/board/write/BoardWrite.container";
+import BoardWrite from "../../../src/components/units/board/write/BoardWrite.container";
 
 export default function GraphqlMutation() {
   // 자바스크립트 영역
