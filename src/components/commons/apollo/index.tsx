@@ -17,10 +17,10 @@ interface IApolloSettingProps {
 // 아폴로세팅함수가 리렌더 되더라도 cache가 리렌더링 되지 않게 하기 위해 - section22 부분 확인
 const GLOBAL_STATE = new InMemoryCache();
 
-export default function ApolloSetting(props: IApolloSettingProps) {
+export default function ApolloSetting(props: IApolloSettingProps): JSX.Element {
   const [accessToken, setAccessToken] = useRecoilState(accessTokenState);
 
-/* pre-redering 예제
+  /* pre-redering 예제
 
 1. process.browser 방법
   if (process.browser) {
