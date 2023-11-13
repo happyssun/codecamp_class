@@ -39,6 +39,11 @@ export default function LoginPage(): JSX.Element {
     setPw(e.currentTarget.value);
   };
   const onClickLogin = async (): Promise<void> => {
+    if (email === "" || pw === "") {
+      alert("이메일과 비밀번호를 입력하세요!");
+      return;
+    }
+
     try {
       // 1. 로그인 뮤테이션 날려서 accessToken 받아오기
       const result = await loginUser({

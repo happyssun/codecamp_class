@@ -57,6 +57,7 @@ export default function LocalStoragePage(): JSX.Element {
       setAccessToken(accessToken);
 
       // 로컬스토리지는 보안의 이유로 좋지 않기 때문에 이것인 임시 사용(나중에 지울예정)
+      // 이거 없어도 되는데 새로고침할때 없어지니까 임시로 걍 저장해둔것
       localStorage.setItem("accessToken", accessToken);
 
       // 3. 로그인 성공 페이지로 이동하기

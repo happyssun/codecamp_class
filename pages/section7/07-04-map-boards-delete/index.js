@@ -12,7 +12,7 @@ const FETCH_BOARDS = gql`
   }
 `;
 
-const FETCH_BOARD = gql`
+const DELETE_BOARD = gql`
   mutation deleteBoard($number: Int) {
     deleteBoard(number: $number) {
       message
@@ -29,7 +29,7 @@ const Column = styled.div`
 `;
 
 export default function StaticRoutedPage() {
-  const [deleteBoard] = useMutation(FETCH_BOARD);
+  const [deleteBoard] = useMutation(DELETE_BOARD);
 
   const { data } = useQuery(FETCH_BOARDS);
 
