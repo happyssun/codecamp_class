@@ -11,6 +11,8 @@ interface IFormData {
 }
 
 export default function GraphqlMutation(): JSX.Element {
+  // register를 통해 속성을 등록
+  // 폼태그에 handleSubmit에 return에 지정해놓은 onClick을 매개변수
   const { register, handleSubmit } = useForm<IFormData>();
 
   const onClickSubmit = (data: IFormData): void => {
