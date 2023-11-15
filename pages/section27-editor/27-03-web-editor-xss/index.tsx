@@ -23,6 +23,8 @@ const CREATE_BOARD = gql`
   }
 `;
 
+
+// xss - cross site script : 다른 사이트에 태그를 심는다
 export default function WebEditorXssPage(): JSX.Element {
   // use-hook-form에서 quill의 value값을 사용할수 있도록 강제로 값을 넣어주는것 setValue
   const { handleSubmit, register, setValue, trigger } = useForm();
