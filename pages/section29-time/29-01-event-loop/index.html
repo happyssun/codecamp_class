@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <title>event loop</title>
+    <script>
+      const onClickLoop = () => {
+        console.log("시작");
+        setTimeout(() => {
+          console.log("0초 뒤에 실행");
+        }, 0);
+
+        let sum = 0;
+        for (let i = 0; i <= 900000000; i++) {
+          sum += 1;
+        }
+        console.log("끝");
+      };
+    </script>
+  </head>
+  <body>
+    <button onclick="onClickLoop()">시작하기</button>
+  </body>
+</html>
+
+<!-- 
+**실행결과
+index.html:7 시작
+index.html:16 끝
+index.html:21 [Violation] 'click' handler took 567ms
+index.html:9 0초 뒤에 실행
+
+1.button을 누르게 되면 onClickTimer함수가 실행된다.
+2.콜스택에서  onClickTimer함수가 실행된다.
+3.background에 setTimeOut()을 보내서 실행한다.
+4.setTimeOut()이 TaskQueue로 전달되어 쌓인다.
+5.TaskQueue에 쌓이는 함수는 CallStack이 다 비워진 다음 가장 마지막에 실행된다.
+
+뭐가 낫다고는 못함 - 장단점있다
+자바스크립트는 싱글스레드 - 메인 일꾼이 하나 : 한 작업을 다 처리되고 나서야 다음 작업을 처리 - 하나하나씩 하는데 빠르게 진행 : 하나가 길면 뒤에꺼 다 중단 - 그래서 시간소요가 작은것들 유리
+파이썬, 자바같은것은 멀티스레드 - 하나씩 조금 실행하고 다음꺼 조금씩 실행하고 그 다음꺼(컨텍스트 스위칭)- 동시처리 느낌은 줄수있음 
+
+콜스택 : 
+  함수 호출과 관련된 정보를 저장하는 자료구조
+  하나하나씩 쌓이는 구조 last-in-first-out 
+
+테스크큐 :
+  함수 호출과 관련된 정보를 저장하는 자료구조
+  비동기 함수의 콜백 함수, 타이머 이벤트 등이 태스크 큐에 저장
+  JavaScript 엔진은 콜 스택이 비어있을 때 태스크 큐에서 작업을 꺼내와 콜 스택으로 이동시키는 방식으로 비동기 작업을 처리
+
+이 과정이 이벤트루프를 통해 관리되는것이고 이 작업을 하는 가짜 일꾼이 스레드 (진짜 일꾼은 CPU)
+
+
+
+
+
+
+-->
