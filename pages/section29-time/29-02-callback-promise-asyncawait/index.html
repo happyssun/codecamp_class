@@ -1,0 +1,116 @@
+<!-- `http://numberapi.com/random?min=1&max=200`-->
+<!-- `https://koreanjson.com/posts/${num}` -->
+<!-- `https://koreanjson.com/posts/?userId=${userId}` -->
+
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <title>callback-promise-asyncawait</title>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <!-- axios 설치-->
+        <script>
+            // 이런식으로 callback함수로 들어간다는 뜻
+            // function addEventListener(aaa,bbb) {
+            // // 셋팅된 API 주소로 요청
+            // const res = 70 // 셋팅된 API 주소로 부터 받아온 결과
+            //  if(aaa === "load") {
+            //   bbb(res)
+            //  }
+            // }
+
+            // callback 방식 - promise, asyncawait가 없던 시절 방식
+            // 안으로 계속 들어가는 콜백지옥 - 유지보수 어려움
+            const myCallback = () => {
+                const aa = new XMLHttpRequest();
+                aa.open("get", `http://numberapi.com/random?min=1&max=200`);
+                aa.send(); // 요청하기
+                aa.addEventListener("load", (res) => {
+                    console.log(res); // API 요청 결과
+                    const num = res.target.response.split("")[0];
+
+                    const bb = new XMLHttpRequest();
+                    bb.open("get", `https://koreanjson.com/posts/${num}`);
+                    bb.send();
+                    bb.addEventListener("load", (res) => {
+                        console.log(res);
+                        const userId = JSON.parse(res.target.response).UserId; // 작성자 ID
+
+                        const cc = new XMLHttpRequest();
+                        cc.open("get", `https://koreanjson.com/posts/?userId=${userId}`);
+                        cc.send();
+                        cc.addEventListener("load", (res) => {
+                            console.log(res); // 최종 API 요청 결과
+                        });
+                    });
+                });
+            };
+
+            /*
+            new myPromise((성공했을때실행시킬함수, 실패했을때실행시킬함수) => {
+                try {
+                    // 여기서 API 요청을 한다면?
+                    const res = "철수"; // 백엔드에서 "철수" 데이터를 받아옴
+                    성공했을때실행시킬함수(res); // 성공했을때 이거 실행
+                } catch (error) {
+                    실패했을때실행시킬함수(); // 실패하면 이거 실행
+                }
+            })
+                .then((qqq) => {
+                    // 성공했을때실행시킬함수()를 실행시키면 여기가 실행이 됨
+                    console.log(qqq); //철수
+                })
+                .catch((err) => {
+                    // 실패했을때실행시킬함수()를 실행시키면 여기가 실행
+                    console.log(err); // 실패했습니다!!
+                });
+
+
+            const axios = {
+                get: () => {
+                    return new Promise((성공시, 실패시) => {});
+                },
+                post: () => {
+                    return new Promise((성공시, 실패시) => {});
+                },
+            };
+
+            */
+
+            // 확인해보면 순서대로가 아니고 바뀌어서 실행됨 - 문제발생
+            const myPromise = () => {
+                console.log("1번째 실행");
+                axios
+                    .get(`http://numberapi.com/random?min=1&max=200`)
+                    .then((res) => {
+                        console.log("2번째 실행");
+                        return axios.get(`https://koreanjson.com/posts/${num}`);
+                    })
+                    .then((res) => {
+                        console.log("3번째 실행");
+                        return axios.get(`https://koreanjson.com/posts/?userId=${userId}`);
+                    })
+                    .then((res) => {
+                        console.log("4번째 실행");
+                        // res 최종 결과
+                    });
+                console.log("5번째 실행");
+            };
+
+            // axios.fetch 등 => 대표적인 Promise를 지원하는 기능
+            // axios.fetch 등을 기다리는 2가지 방법
+            // 1. .then() 활용
+            // 2. .await 활용 => 주의! await는 꼭 Promise앞에 사용해야 함 axios는 프로미스임으로 가능
+
+            const myAsyncAwait = async () => {
+                await axios.get(`http://numberapi.com/random?min=1&max=200`),
+                    await axios.get(`https://koreanjson.com/posts/${num}`),
+                    await axios.get(`https://koreanjson.com/posts/?userId=${userId}`);
+            };
+        </script>
+    </head>
+    <body>
+        <button onclick="myCallback()">Callback 연습하기!</button>
+        <button onclick="myPromise()">Promise 연습하기!</button>
+        <button onclick="myAsyncAwait()">AsyncAwait 연습하기!</button>
+    </body>
+</html>
