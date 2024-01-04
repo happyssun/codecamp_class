@@ -33,7 +33,7 @@ export default function EditorXssDetatilPage(): JSX.Element {
     __html: data?.fetchBoard?.contents,
   }
  */
- 
+
   return (
     <>
       <div style={{ color: "red" }}>작성자: {data?.fetchBoard.writer}</div>
@@ -45,6 +45,7 @@ export default function EditorXssDetatilPage(): JSX.Element {
         ssr에서 프리렌더링이 안되는 퀼때문애 현재 typeof window !== "undefined" 조건을 걸어놨다
         그래서 색상이 orange색이 보이지 않고 서버에서 프리렌더링이 되는 red, blue, green이 보일것이다. 
         그렇기 떄문에 서버의 프리렌더링을 위해 밑에 빈 div태를 넣어놓고 서버에선 이것을 보여줘 이렇게 조건을 걸어놓은것  */}
+      {/* div 및 span 태그로 dangerouslySetInnerHTML 를 사용한다면 반드시 빈 태그 형식으로 작성해야함. */}
       {typeof window !== "undefined" ? (
         <div
           style={{ color: "orange" }}
@@ -83,4 +84,6 @@ export default function EditorXssDetatilPage(): JSX.Element {
  *
  * 이런 것들을 방지하기 위해
  * npm에서 dompurify것들을 받아 사용할수있다 - ssr에서 프리랜더링 안됨 typeof 같은 조건 넣어줌
+ * DOMPurify 라이브러리를 사용하여 HTML을 정리하고, 안전하게 렌더링하기 위한 코드입니다.
+ * DOMPurify는 브라우저에서 제공하는 기본적인 HTML 정리 능력을 보완하여 XSS 공격으로부터 보호
  */

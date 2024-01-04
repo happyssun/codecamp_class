@@ -1,3 +1,6 @@
+// 크로스 사이트 스크립팅(XSS)
+//  애플리케이션에서 발생하는 보안 취약점 중 하나로, 공격자가 악의적인 스크립트를 웹 페이지에 삽입하여 사용자 브라우저에서 실행되게 하는 공격
+// 이러한 공격은 사용자들의 브라우저에서 JavaScript 코드를 실행하여 사용자 데이터를 탈취하거나 다양한 악의적인 행동을 유발가능
 import { useQuery, gql } from "@apollo/client";
 import { useRouter } from "next/router";
 import Dompurify from "dompurify";
