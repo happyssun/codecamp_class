@@ -11,8 +11,8 @@ import { useRouter } from "next/router";
 import { wrapAsync } from "../../../src/commons/libraries/asyncFunc";
 
 const LOGIN_USER = gql`
-  mutation loginUser($password: String!, $email: String!) {
-    loginUser(password: $password, email: $email) {
+  mutation loginUserExample($password: String!, $email: String!) {
+    loginUserExample(password: $password, email: $email) {
       accessToken
     }
   }
@@ -21,8 +21,8 @@ const LOGIN_USER = gql`
 export default function LoginPage(): JSX.Element {
   const [email, setEmail] = useState("");
   const [pw, setPw] = useState("");
-  const [loginUser] = useMutation<
-    Pick<Mutation, "loginUser">,
+  const [loginUserExample] = useMutation<
+    Pick<Mutation, "loginUserExample">,
     MutationLoginUserArgs
   >(LOGIN_USER);
 
@@ -46,13 +46,13 @@ export default function LoginPage(): JSX.Element {
 
     try {
       // 1. 로그인 뮤테이션 날려서 accessToken 받아오기
-      const result = await loginUser({
+      const result = await loginUserExample({
         variables: {
           password: pw,
           email,
         },
       });
-      const accessToken = result.data?.loginUser.accessToken;
+      const accessToken = result.data?.loginUserExample.accessToken;
       console.log(accessToken);
 
       // 2. 받아온 accessToken을 globalState에 저장하기
@@ -63,7 +63,7 @@ export default function LoginPage(): JSX.Element {
       setAccessToken(accessToken);
 
       // 3. 로그인 성공 페이지로 이동하기
-      void router.push("/section23-logIn/23-01-login-success");
+      void router.push("/section30-auth/30-01-login-refreshtoken-success");
     } catch (error) {
       if (error instanceof Error) alert(error.message);
     }
