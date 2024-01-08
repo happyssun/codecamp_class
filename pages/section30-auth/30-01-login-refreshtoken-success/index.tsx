@@ -1,5 +1,4 @@
 import { gql, useApolloClient } from "@apollo/client";
-
 import { wrapAsync } from "../../../src/commons/libraries/asyncFunc";
 
 const FETCH_USER_LOGGED_IN = gql`
@@ -37,10 +36,26 @@ export default function LoginSuccessPage(): JSX.Element {
   const client = useApolloClient();
 
   const onClickBtn = async (): Promise<void> => {
-    const result = await client.query({
-      query: FETCH_USER_LOGGED_IN,
-    });
-    console.log(result);
+    try {
+      const result = await client.query({
+        query: FETCH_USER_LOGGED_IN,
+      });
+      console.log("Query result:", result);
+
+      const userData = result?.data?.fetchUserLoggedIn;
+      console.log("User data:", userData);
+
+      // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
+      if (!userData || !("_id" in userData) || userData._id === null) {
+        console.error("Invalid user data:", userData);
+        return;
+      }
+
+      console.log("User data is valid:", userData);
+      // 여기에서 userData를 활용하여 화면에 표시하는 로직을 추가할 수 있습니다.
+    } catch (error) {
+      console.error("Error fetching user data:", error);
+    }
   };
 
   return (

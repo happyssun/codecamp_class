@@ -48,6 +48,7 @@ export default function ApolloSetting(props: IApolloSettingProps): JSX.Element {
   }
 
 3. 프리렌더링을 무시 - useEffect 방법 : 가장 많이 사용 */
+
   useEffect(() => {
     // 1. 기존방식(refreshToken 이전)
     /*
@@ -85,7 +86,7 @@ export default function ApolloSetting(props: IApolloSettingProps): JSX.Element {
               "http://backend-practice.codebootcamp.co.kr/graphql"
             );
             const result = await graphQLClient.request(RESTORE_ACCESS_TOKEN);
-            const newAccessToken = result.restoreAcessToken.accessTken;
+            const newAccessToken = result.restoreAcessToken.accessToken;
             */
 
             // 2. refreshToken으로 accessToken을 재발급 받기

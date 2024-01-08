@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>리플로우 / 리페인트</title>
+    <style>
+      .reflow {
+        width: 100px;
+        height: 100px;
+        background-color: skyblue;
+      }
+      .reflow:hover {
+        width: 110px;
+        height: 110px;
+      }
+
+      .repaint {
+        width: 100px;
+        height: 100px;
+        background-color: yellow;
+      }
+      .repaint:hover {
+        background-color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="reflow">리플로우 연습!</div>
+    <div class="repaint">리페인트 연습!</div>
+  </body>
+</html>
+
+<!-- 
+콘솔의 퍼포먼스에 들어가서 녹화를 하고 마우스를 올려보고 정지
+그리고나서 밑의 call tree를 보면
+1. 리플로우 / 레이아웃 (파이어폭스/ 구글에서 부르는게 다름)
+  - 위치를 다시 잡고 색을 다시 칠해야 함 
+  ==> 두번 작업해서 더 느림
+
+2. 리페인트 / 페인트
+  - 색만 다시 칠함
+  ==> 한번 작업이라 빠름 
+-->

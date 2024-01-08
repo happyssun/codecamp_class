@@ -3,12 +3,11 @@ import { useState } from "react";
 import type { ChangeEvent } from "react";
 import type {
   Mutation,
-  MutationLoginUserArgs,
+  MutationLoginUserExampleArgs,
 } from "../../../src/commons/types/generated/types";
 import { useRecoilState } from "recoil";
 import { accessTokenState } from "../../../src/commons/stores";
 import { useRouter } from "next/router";
-import { wrapAsync } from "../../../src/commons/libraries/asyncFunc";
 
 const LOGIN_USER = gql`
   mutation loginUserExample($password: String!, $email: String!) {
@@ -23,7 +22,7 @@ export default function LoginPage(): JSX.Element {
   const [pw, setPw] = useState("");
   const [loginUserExample] = useMutation<
     Pick<Mutation, "loginUserExample">,
-    MutationLoginUserArgs
+    MutationLoginUserExampleArgs
   >(LOGIN_USER);
 
   // const [accessToken, setAccessToken] 안쓰는것을 지워도 됨
@@ -74,7 +73,7 @@ export default function LoginPage(): JSX.Element {
       <input type="text" onChange={onChangeEmail} />
       비밀번호:
       <input type="password" onChange={onChangePw} />
-      <button onClick={wrapAsync(onClickLogin)}>로그인</button>
+      <button onClick={onClickLogin}>로그인</button>
     </>
   );
 }
