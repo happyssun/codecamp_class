@@ -33,13 +33,13 @@ const Page = styled.span`
   font-size: 18px;
 `;
 
-export default function PagiNationPage() {
+export default function PagiNationPage(): JSX.Element {
   const { data, refetch } = useQuery<
     Pick<Query, "fetchBoards">,
     QueryFetchBoardsArgs
   >(FETCH_BOARDS);
 
-  const onClickPage = (e: MouseEvent<HTMLSpanElement>) => {
+  const onClickPage = (e: MouseEvent<HTMLSpanElement>): void => {
     refetch({ page: Number(e.currentTarget.id) }); // page는 variables 그래서 {}안에 넣음
   };
 
