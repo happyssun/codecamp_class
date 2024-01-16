@@ -1,0 +1,21 @@
+<!-- 
+  << 리소스 다운로드 순서 >> 
+  1. HTML 파일의 다운로드 주소를 먼저 읽어들인 후, 백그라운드에서 6개씩 다운로드 요청시도
+  2. 위에서부터 읽기 시작
+  3. <script />태그의 "정지!" 라는 구문에서 화면은 멈췄지만, 이미 다운로드 요청은 들어간 상태
+
+-->
+
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <title>Resource download sequence</title>
+    <link rel="stylesheet" href="./index.css" />
+    <script>
+      alert("정지");
+    </script>
+  </head>
+  <body>
+    <script src="./index.js"></script>
+  </body>
+</html>
