@@ -4,8 +4,8 @@ import { ChangeEvent, useState, useRef } from "react";
 import {
   Mutation,
   MutationUploadFileArgs,
-} from "../../src/commons/types/generated/types";
-import { checkValidationFile } from "../../src/commons/libraries/validationFile";
+} from "../../../src/commons/types/generated/types";
+import { checkValidationFile } from "../../../src/commons/libraries/validationFile";
 
 // 변수에 받아서 넣기, $는 변수
 // playground 참조하여 작성
@@ -26,7 +26,7 @@ const UPLOAD_FILE = gql`
   }
 `;
 
-export default function BoardWritePage() {
+export default function BoardWritePage(): JSX.Element {
   const [createBoard] = useMutation(CREATE_BOARD);
 
   const [uploadFile] = useMutation<
@@ -54,7 +54,9 @@ export default function BoardWritePage() {
     setContents(e.target.value);
   };
 
-  const onChangeFile = async (e: ChangeEvent<HTMLInputElement>) => {
+  const onChangeFile = async (
+    e: ChangeEvent<HTMLInputElement>
+  ): Promise<void> => {
     const file = e.target.files?.[0];
     console.log(file);
 

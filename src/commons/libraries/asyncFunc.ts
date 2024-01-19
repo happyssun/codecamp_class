@@ -1,8 +1,10 @@
 import { FormEvent } from "react";
 
-export const wrapAsync = (asyncFunc: () => Promise<void>) => () => {
-  void asyncFunc();
-};
+// event타입을 any가 아닌  좀 더 안전한 generic 타입을 이용하여 event: ChangeEvent<HTMLInput>, <HTMLButton>등 다양한곳에 사용
+// prettier-ignore
+export const wrapAsync = <E>(asyncFunc:(event: E) => Promise<void>) => (event:E) => {
+    void asyncFunc(event);
+  };
 
 export const wrapFormAsync =
   (asyncFunc: () => Promise<void>) => (event: FormEvent<HTMLFormElement>) => {
