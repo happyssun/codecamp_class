@@ -9,17 +9,9 @@
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
         <!-- axios 설치-->
         <script>
-            // 이런식으로 callback함수로 들어간다는 뜻
-            // function addEventListener(aaa,bbb) {
-            // // 셋팅된 API 주소로 요청
-            // const res = 70 // 셋팅된 API 주소로 부터 받아온 결과
-            //  if(aaa === "load") {
-            //   bbb(res)
-            //  }
-            // }
-
-            // callback 방식 - promise, asyncawait가 없던 시절 방식
-            // 안으로 계속 들어가는 콜백지옥 - 유지보수 어려움
+            // 비동기작업 처리 방식 - 요청을 보낸후 결과를 받지 않아도 다음동작이 이루어지는 방식
+            /* 1. callback 방식 - promise, asyncawait가 없던 시절 방식
+                    함수 안으로 계속 파고 들어가는 콜백지옥 - 유지보수 어려움 */
             const myCallback = () => {
                 const aa = new XMLHttpRequest();
                 aa.open("get", `http://numberapi.com/random?min=1&max=200`);
@@ -45,7 +37,7 @@
                 });
             };
 
-            /*
+            /* 2. Promise() 방식 - 순서가 뒤죽박죽되어서 문제발생
             new myPromise((성공했을때실행시킬함수, 실패했을때실행시킬함수) => {
                 try {
                     // 여기서 API 요청을 한다면?
@@ -74,9 +66,8 @@
                 },
             };
 
-            */
 
-            // 확인해보면 순서대로가 아니고 바뀌어서 실행됨 - 문제발생
+            // 확인해보면 순서대로가 아니고 바뀌어서 실행됨 - 문제발생  */
             const myPromise = () => {
                 console.log("1번째 실행");
                 axios
@@ -96,10 +87,9 @@
                 console.log("5번째 실행");
             };
 
-            // axios.fetch 등 => 대표적인 Promise를 지원하는 기능
-            // axios.fetch 등을 기다리는 2가지 방법
-            // 1. .then() 활용
-            // 2. .await 활용 => 주의! await는 꼭 Promise앞에 사용해야 함 axios는 프로미스임으로 가능
+            /* 3. async / await 방식 
+                    1).then() 활용
+                    2).await 활용 => 주의! await는 꼭 Promise앞에 사용해야 함 axios는 프로미스임으로 가능 */
 
             const myAsyncAwait = async () => {
                 await axios.get(`http://numberapi.com/random?min=1&max=200`),
