@@ -40,7 +40,7 @@ const Page = styled.span`
 // yarn add lodash
 // yarn add - D @types/lodash
 
-export default function SearchWithoutBtn() {
+export default function SearchWithoutBtn(): JSX.Element {
   const { data, refetch } = useQuery<
     Pick<Query, "fetchBoards">,
     QueryFetchBoardsArgs

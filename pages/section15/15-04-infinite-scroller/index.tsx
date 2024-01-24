@@ -28,7 +28,7 @@ const Column = styled.div`
   width: 25%;
 `;
 
-export default function infiniteScrollerPage() {
+export default function infiniteScrollerPage(): JSX.Element {
   const { data, fetchMore } = useQuery<
     Pick<Query, "fetchBoards">,
     QueryFetchBoardsArgs
