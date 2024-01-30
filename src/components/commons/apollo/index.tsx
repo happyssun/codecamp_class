@@ -8,8 +8,8 @@ import {
 import { createUploadLink } from "apollo-upload-client";
 import { useRecoilState, useRecoilValueLoadable } from "recoil";
 import {
-  accessTokenState,
-  restoreAccessTokenLoadable,
+  classAccessTokenState,
+  classRestoreAccessTokenLoadable,
 } from "../../../commons/stores";
 import { useEffect } from "react";
 import { onError } from "@apollo/client/link/error";
@@ -25,9 +25,9 @@ const GLOBAL_STATE = new InMemoryCache();
 
 export default function ApolloSetting(props: IApolloSettingProps): JSX.Element {
   // 아폴로세팅을 작업을 하는 작업
-  const [accessToken, setAccessToken] = useRecoilState(accessTokenState);
+  const [accessToken, setAccessToken] = useRecoilState(classAccessTokenState);
 
-  const aaa = useRecoilValueLoadable(restoreAccessTokenLoadable);
+  const aaa = useRecoilValueLoadable(classRestoreAccessTokenLoadable);
   /* pre-redering 예제
 
 1. process.browser 방법

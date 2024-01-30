@@ -9,7 +9,7 @@ import {
   Mutation,
   MutationLikeBoardArgs,
   Query,
-  QueryFetchBoardsArgs,
+  QueryFetchBoardArgs,
 } from "../../../src/commons/types/generated/types";
 
 const FETCH_BOARD = gql`
@@ -28,7 +28,7 @@ const LIKE_BOARD = gql`
 `;
 
 export default function OptimisticUIPage(): JSX.Element {
-  const { data } = useQuery<Pick<Query, "fetchBoard">, QueryFetchBoardsArgs>(
+  const { data } = useQuery<Pick<Query, "fetchBoard">, QueryFetchBoardArgs>(
     FETCH_BOARD,
     {
       variables: { boardId: "65af6dfb5d6eaa0029f7d817" },

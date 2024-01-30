@@ -1,23 +1,23 @@
 import { atom, selector } from "recoil"; // 변수는 state는 atom으로  함수는 selcetor
 import { getAccessToken } from "../libraries/getAccessToken";
 
-export const isEditState = atom({
-  key: "isEditState", // 스테이트 이름
+export const classIsEditState = atom({
+  key: "classIsEditState", // 스테이트 이름
   default: true, // 초기값
 });
 
-export const accessTokenState = atom({
-  key: "accessTokenState",
+export const classAccessTokenState = atom({
+  key: "classAccessTokenState",
   default: "",
 });
 
-export const visitedPageState = atom({
-  key: "visitedPageState",
+export const classVisitedPageState = atom({
+  key: "classVisitedPageState",
   default: "",
 });
 
-export const restoreAccessTokenLoadable = selector({
-  key: "restoreAccessTokenLoadable",
+export const classRestoreAccessTokenLoadable = selector({
+  key: "classRestoreAccessTokenLoadable",
   get: async () => {
     const newAccessToken = await getAccessToken();
     return newAccessToken;

@@ -1,3 +1,10 @@
+/* 프리로드 
+  다음페이지의 이미지 => 다음페이지에서 보여질 이미지 미리 다운로드
+  현재 페이지 => 현재페이지의 다운로드 순서를 조작, 용량이 큰 이미지 먼저 다운로드하여 전체 다운로드 시간 축소
+*/
+
+
+
 import React, { useEffect } from "react";
 import { useMoveToPage } from "../../../src/components/commons/hooks/useMoveToPage";
 

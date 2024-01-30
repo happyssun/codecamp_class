@@ -1,6 +1,3 @@
-// 여기서부터 플레이그라운드 서버 주소를 변경헸다. 코드젠도 변경
-// 따라서 이전의 타입스크립트에 문제가 생긴것들은 무시
-
 import { useQuery, gql } from "@apollo/client";
 import styled from "@emotion/styled";
 import {
@@ -53,7 +50,7 @@ export default function LayoutShiftPage(): JSX.Element {
         </Row>
       ))} */}
 
-      {/* 수정 코드 : 리플로우 현상 방자 
+      {/* 수정 코드 : 리플로우 현상 방지
       // 화면에 데이터가 안뜨더라도 이미 게시판의 위치에 10개의 배열을 만들어둬서 빈칸으로 떠있음
       // 그 위에 데이터를 뿌려줌 */}
       {(data?.fetchBoards ?? new Array(10).fill(1)).map((el) => (

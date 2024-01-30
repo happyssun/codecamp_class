@@ -1,4 +1,5 @@
-import React, { useCallback, useMemo, useState } from "react";
+/* 메모이제이션 - memo, useMemo, useCallback 등 */
+import { useCallback, useMemo, useState } from "react";
 
 export default function MemeizationPage(): JSX.Element {
   console.log("컴포넌트가 렌더링 되었습니디");

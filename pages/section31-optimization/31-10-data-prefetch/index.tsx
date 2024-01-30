@@ -1,6 +1,10 @@
+/* 프리패치 prefetch
+  다음페이지 => 다음에 보여질 페이지를 미리 다운로드
+  다음페이지의 데이터 => 다음에 보여질 페이지에서 사용될 데이터를 미리 다운로드
+*/
+
 // 게시판에서 게시글에 사용자가 마우스를 오버했을때
 // 그 게시물에 대한 내용을 미리 prefetch
-
 import { useQuery, gql, useApolloClient } from "@apollo/client";
 import styled from "@emotion/styled";
 import {
