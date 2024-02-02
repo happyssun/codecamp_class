@@ -8,8 +8,8 @@ export default function OpengraphDeveloper(): JSX.Element {
 
     // 2. 해당 주소로 스크랩핑하기
     const result = await axios.get(
-      "http://localhost:3000/section32-brower/32-01-opengraph-provider"
-    ); 
+      "http://localhost:3000/section32-browser/32-01-opengraph-provider"
+    );
     console.log(result.data);
     /// 해당 주소의 백엔드에서 cors(cross-origin-resource-sharing)을 열어주지 않으면 스크랩핑불가
     /// www.naver.com 같은 사이트들은 막혀있음

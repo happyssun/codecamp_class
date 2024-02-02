@@ -5,14 +5,14 @@ import Layout from "../src/components/commons/layout";
 import { globalStyles } from "../src/components/commons/styles/globalStyles";
 import { RecoilRoot } from "recoil";
 
-function App({ Component }: AppProps): JSX.Element {
+function App({ Component, pageProps }: AppProps): JSX.Element {
   return (
     <RecoilRoot>
       <ApolloSetting>
         <>
           <Global styles={globalStyles} />
           <Layout>
-            <Component />
+            <Component {...pageProps} />
           </Layout>
         </>
       </ApolloSetting>
@@ -25,7 +25,7 @@ function App({ Component }: AppProps): JSX.Element {
     // </ApolloProvider>
   );
 }
-
+ 
 export default App;
 
 // component를 layout으로 감싸줘서 페이지 전체의 레이아웃을 지정

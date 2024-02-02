@@ -1,12 +1,12 @@
 import BoardWrite from "../../../src/components/units/22-global-state/BoardWrite.container";
 import { useRecoilState } from "recoil";
-import { isEditState } from "../../../src/commons/stores";
+import { classIsEditState } from "../../../src/commons/stores";
 import { useEffect } from "react";
 
-export default function GlobalStateWithRecoilPage() {
+export default function GlobalStateWithRecoilPage(): JSX.Element {
   // const [isEdit, setIsEdit] = useState(true);
 
-  const [, setIsEdit] = useRecoilState(isEditState);
+  const [, setIsEdit] = useRecoilState(classIsEditState);
 
   useEffect(() => {
     setIsEdit(false);

@@ -2,8 +2,8 @@ import { atom, selector } from "recoil"; // 변수는 state는 atom으로  함�
 import { getAccessToken } from "../libraries/getAccessToken";
 
 export const classIsEditState = atom({
-  key: "classIsEditState", // 스테이트 이름
-  default: true, // 초기값
+  key: "classIsEditState",
+  default: true,
 });
 
 export const classAccessTokenState = atom({

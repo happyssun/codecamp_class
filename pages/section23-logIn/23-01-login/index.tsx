@@ -6,7 +6,7 @@ import type {
   MutationLoginUserArgs,
 } from "../../../src/commons/types/generated/types";
 import { useRecoilState } from "recoil";
-import { accessTokenState } from "../../../src/commons/stores";
+import { classAccessTokenState } from "../../../src/commons/stores";
 import { useRouter } from "next/router";
 import { wrapAsync } from "../../../src/commons/libraries/asyncFunc";
 
@@ -29,7 +29,7 @@ export default function LoginPage(): JSX.Element {
   // const [accessToken, setAccessToken] 안쓰는것을 지워도 됨
   // 앞에 있는건 , 지우면 불가능하고
   // 뒤에있는 건 , 까지 지워도 가능
-  const [, setAccessToken] = useRecoilState(accessTokenState);
+  const [, setAccessToken] = useRecoilState(classAccessTokenState);
   const router = useRouter();
 
   const onChangeEmail = (e: ChangeEvent<HTMLInputElement>): void => {
